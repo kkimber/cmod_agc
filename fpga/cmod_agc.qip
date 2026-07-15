@@ -16,6 +16,8 @@ set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "hdl/mo
 set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "hdl/monitor/clear_timer.v"]
 set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "hdl/monitor/cmd_controller.v"]
 set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "hdl/monitor/cmd_receiver.v"]
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "hdl/monitor/cmd_controller.v"]
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "hdl/monitor/cdu_control.v"]
 set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "hdl/monitor/control_regs.v"]
 set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "hdl/monitor/core_rope_sim.v"]
 set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "hdl/monitor/debounce.v"]

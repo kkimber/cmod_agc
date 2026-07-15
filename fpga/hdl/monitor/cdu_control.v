@@ -81,16 +81,16 @@ wire cycles_full;
 wire oldest;
 
 inkl_cycles inkl_cycles1(
-    .clk(clk),
-    .srst(~rst_n),
+    .clock(clk),
+    .sclr(~rst_n),
 
     .full(cycles_full),
-    .din(minkl),
-    .wr_en(t7_start_p),
+    .data(minkl),
+    .wrreq(t7_start_p),
 
     .empty(),
-    .dout(oldest),
-    .rd_en(cycles_full && t7_start)
+    .q(oldest),
+    .rdreq(cycles_full && t7_start)
 );
 
 reg [15:0] tloss;

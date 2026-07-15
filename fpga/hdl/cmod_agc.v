@@ -1,6 +1,9 @@
 `timescale 1ns / 1ps
 `default_nettype none
 
+// Expose DSKY I/F to top (for now)
+`define DSKY_INTERFACE
+
 module cmod_agc(
     input wire clk,
     input wire rst,
@@ -257,6 +260,12 @@ wire MPAL_n;
 wire MPIPAL_n;
 wire MON800;
 wire OUTCOM;
+
+// Moved from below to satisfy Questa
+wire n3200A;
+wire n3200B;
+wire n800SET;
+wire n800RST;
 
 wire [6:1] leds;
 wire [6:1] dbg;
@@ -669,10 +678,10 @@ assign TEMPIN = 1;
 assign ISSTOR = 0;
 assign RRPONA = 0;
 wire n25KPPS;
-wire n3200A;
-wire n3200B;
-wire n800SET;
-wire n800RST;
+//wire n3200A;
+//wire n3200B;
+//wire n800SET;
+//wire n800RST;
 wire CDUCLK;
 wire CDUXDM;
 wire CDUXDP;
@@ -706,7 +715,8 @@ always @(posedge prop_clk or negedge rst_n) begin
     end else begin
         clock_p <= CLOCK;
         if (CLOCK && ~clock_p) begin
-            if (strt2_count < 19'd409600) begin
+            //if (strt2_count < 19'd409600) begin
+            if (strt2_count < 19'd1000) begin
                 strt2_count <= strt2_count + 1;
             end else begin
                 STRT2 <= 1'b0;

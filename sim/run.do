@@ -17,6 +17,7 @@ vlog  -work work +incdir+../fpga/ip/erasable_sim_mem {../fpga/ip/erasable_sim_me
 vlog  -work work +incdir+../fpga/ip/downlink_fifo {../fpga/ip/downlink_fifo/downlink_fifo.v}
 vlog  -work work +incdir+../fpga/ip/core_memory {../fpga/ip/core_memory/core_memory.v}
 vlog  -work work +incdir+../fpga/ip/cmd_fifo {../fpga/ip/cmd_fifo/cmd_fifo.v}
+vlog  -work work +incdir+../fpga/ip/cmd_fifo {../fpga/ip/inkl_cycles/inkl_cycles.v}
 vlog  -work work +incdir+../fpga/ip/cmd_fifo {../fpga/ip/prop_clk_div/prop_clk_div.v}
 vlog  -work work +incdir+../fpga/ip/cmd_fifo {../fpga/ip/prop_clk_div/prop_clk_div_sim/prop_clk_div.vo}
 vlog  -work work +incdir+../fpga/hdl/agc/components {../fpga/hdl/agc/components/MR0A16A.v}
@@ -31,6 +32,8 @@ vlog  -work work +incdir+../fpga/hdl/agc/components {../fpga/hdl/agc/components/
 vlog  -work work +incdir+../fpga/hdl/monitor {../fpga/hdl/monitor/monitor_defs.v}
 vlog  -work work +incdir+../fpga/hdl/monitor {../fpga/hdl/monitor/agc_clk_div.v}
 vlog  -work work +incdir+../fpga/hdl/monitor {../fpga/hdl/monitor/channel.v}
+vlog  -work work +incdir+../fpga/hdl/monitor {../fpga/hdl/monitor/cmd_controller.v}
+vlog  -work work +incdir+../fpga/hdl/monitor {../fpga/hdl/monitor/cdu_control.v}
 vlog  -work work +incdir+../fpga/hdl/monitor {../fpga/hdl/monitor/clear_timer.v}
 vlog  -work work +incdir+../fpga/hdl/monitor {../fpga/hdl/monitor/debounce.v}
 vlog  -work work +incdir+../fpga/hdl/monitor {../fpga/hdl/monitor/erasable_addr_decoder.v}
