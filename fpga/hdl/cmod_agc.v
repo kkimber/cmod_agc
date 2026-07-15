@@ -715,8 +715,11 @@ always @(posedge prop_clk or negedge rst_n) begin
     end else begin
         clock_p <= CLOCK;
         if (CLOCK && ~clock_p) begin
-            //if (strt2_count < 19'd409600) begin
+`ifdef SIM_FAST_START
             if (strt2_count < 19'd1000) begin
+`else
+            if (strt2_count < 19'd409600) begin
+`endif
                 strt2_count <= strt2_count + 1;
             end else begin
                 STRT2 <= 1'b0;
