@@ -1,7 +1,10 @@
 `timescale 1ns / 1ps
 `default_nettype none
 
-module channel(
+module channel #(
+    parameter CHAN = 1,
+    parameter WIDTH = 15
+)(
     input wire clk,
     input wire rst_n,
 
@@ -13,8 +16,6 @@ module channel(
     output reg [WIDTH:1] val
 );
 
-parameter CHAN = 1;
-parameter WIDTH = 15;
 
 always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin

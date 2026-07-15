@@ -40,6 +40,8 @@ reg [2:0] next_state;
 
 reg [4:0] pending_rupts;
 
+reg [16:1] tcf_rupt;
+
 always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
         pending_rupts <= 5'b0;
@@ -76,7 +78,6 @@ always @(posedge clk or negedge rst_n) begin
     end
 end
 
-reg [16:1] tcf_rupt;
 reg tcf_monpar;
 always @(*) begin
     if (pending_rupts[0]) begin

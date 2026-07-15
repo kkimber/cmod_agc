@@ -102,11 +102,11 @@ module MR0A16A (A0, A1, A2, A3, A4, E_n, DQL0, DQL1, DQL2, DQL3, VDD1, VSS1, DQL
     assign write_word = {DQU15_in, DQU14_in, DQU13_in, DQU12_in, DQU11_in, DQU10_in, DQU9_in, DQU8_in, DQL7_in, DQL6_in, DQL5_in, DQL4_in, DQL3_in, DQL2_in, DQL1_in, DQL0_in};
 
     core_memory ram(
-        .clka(SIM_CLK),
-        .wea(wren),
-        .addra(addr),
-        .dina(write_word),
-        .douta(read_word)
+        .clock(SIM_CLK),
+        .wren(wren),
+        .address(addr),
+        .data(write_word),
+        .q(read_word)
     );
 endmodule
 `default_nettype wire

@@ -1,15 +1,16 @@
 `timescale 1ns / 1ps
 `default_nettype none
 
-module debounce(
+module debounce #(
+    parameter WIDTH = 16,
+    parameter COUNT = 5
+)(
     input wire clk,
     input wire rst_n,
     input wire [WIDTH:1] in,
     output reg [WIDTH:1] out
 );
 
-parameter WIDTH = 16;
-parameter COUNT = 5;
 
 reg [3:0] counter;
 

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<simPackage>
+ <file path="prop_clk_div_sim/prop_clk_div.vo" type="VERILOG" />
+ <topLevel name="prop_clk_div" />
+ <deviceFamily name="cyclonev" />
+</simPackage>

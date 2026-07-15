@@ -60,6 +60,9 @@ reg gimbal_lock;
 reg tracker;
 reg prog_alarm;
 
+reg [4:0] main_keycode;
+reg [6:0] nav_keycode;
+
 always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
         prog <= 10'b0;
@@ -191,9 +194,6 @@ assign com_act = dsalmout[2];
 
 wire vnflash;
 assign vnflash = dsalmout[6];
-
-reg [4:0] main_keycode;
-reg [6:0] nav_keycode;
 
 reg proceed;
 

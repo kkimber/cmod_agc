@@ -1,7 +1,9 @@
 `timescale 1ns / 1ps
 `default_nettype none
 
-module register2(
+module register2 #(
+    parameter WIDTH = 16
+)(
     input wire clk,
     input wire rst_n,
     input wire ct,
@@ -12,7 +14,6 @@ module register2(
     output reg [WIDTH:1] val
 );
 
-parameter WIDTH = 16;
 
 always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin

@@ -121,11 +121,11 @@ wire agc_clk;
 wire mon_clk;
 
 prop_clk_div prop_div(
-    .clk_in1(clk),
-    .reset(~rst_n),
+    .refclk(clk),
+    .rst(~rst_n),
     .locked(prop_locked),
-    .clk_out1(prop_clk),
-    .clk_out2(mon_clk)
+    .outclk_0(prop_clk),
+    .outclk_1(mon_clk)
 );
 
 agc_clk_div agc_div(

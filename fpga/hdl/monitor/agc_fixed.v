@@ -32,7 +32,7 @@ localparam IDLE = 0,
 reg [1:0] state;
 reg [1:0] next_state;
 
-assign read_done = (state == READ_FIXED) & periph_complete;;
+assign read_done = (state == READ_FIXED) & periph_complete;
 assign data_out = (state == COMPLETE) ? {periph_read_data[16], periph_read_data[14:1], periph_read_parity} : 16'b0;
 
 wire [7:5] cmd_fext;

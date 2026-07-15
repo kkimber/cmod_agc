@@ -176,16 +176,16 @@ assign read_addr = (trace_idx - addr[13:0]) - 1;
 wire [63:0] trace_data;
 
 trace_memory mem(
-    .clka(clk),
-    .ena(trace_write),
-    .wea(trace_write),
-    .addra(trace_idx),
-    .dina({trace_m, trace_z, trace_b, w}),
+    .clock(clk),
+    //.ena(trace_write), [N/A]
+    .wren(trace_write),
+    .wraddress(trace_idx),
+    .data({trace_m, trace_z, trace_b, w}),
 
-    .clkb(clk),
-    .enb(read_en),
-    .addrb(read_addr),
-    .doutb(trace_data)
+    //clkb [N/A]
+    .rden(read_en),
+    .rdaddress(read_addr),
+    .q(trace_data)
 );
 
 reg read_done;

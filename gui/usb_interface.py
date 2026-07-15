@@ -81,6 +81,18 @@ class USBInterface(QObject):
         try:
             dev_info = None
             for info in QSerialPortInfo.availablePorts():
+
+                # print("----------------------------------------")
+                # print(f"Port Name      : {info.portName()}")
+                # print(f"System Location: {info.systemLocation()}")
+                # print(f"Description    : {info.description()}")
+                # print(f"Manufacturer   : {info.manufacturer()}")
+                # print(f"Serial Number  : {info.serialNumber()}")
+                # print(f"Vendor ID      : 0x{info.vendorIdentifier():04X}"
+                      # if info.hasVendorIdentifier() else "Vendor ID      : N/A")
+                # print(f"Product ID     : 0x{info.productIdentifier():04X}"
+                      # if info.hasProductIdentifier() else "Product ID     : N/A")
+
                 if ((info.manufacturer() in ('Digilent', 'FTDI')) and
                     (info.hasVendorIdentifier() and info.vendorIdentifier() == 0x0403) and
                     (info.hasProductIdentifier() and info.productIdentifier() == 0x6010)):

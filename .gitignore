@@ -1,6 +1,15 @@
 __pycache__
+*~ 
+*.bak
 gui/cores/*
 gui/roms/*
 gui/pads/*
 gui/traces/*
 build/
+# Simulation
+transcript
+*.wlf
+sim/modelsim.ini
+sim/work/*
+fpga/roms/*.ver
+

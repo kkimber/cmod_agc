@@ -47,7 +47,7 @@ assign mamu = (state != IDLE);
 
 wire [2:0] bank;
 assign bank = e_cycle_addr[11:9];
-erasable_addr_decoder(
+erasable_addr_decoder u_decoder(
     .eb(eb),
     .s(s),
     .eaddr(e_cycle_addr)
@@ -77,18 +77,19 @@ assign agc_data_in = {g[16], g[14:1], ~mgp_n};
 wire [16:1] agc_data_out;
 
 erasable_sim_mem core_mem(
-    .clka(clk),
-    .ena(erasable_mem_en),
-    .wea(write_en | int_write_en),
-    .addra(int_write_en ? int_addr : addr[10:0]),
-    .dina(int_write_en ? int_data : data_in),
-    .douta(erasable_mem_data),
+    .clock(clk),
+    .rden_a(erasable_mem_en),
+    .wren_a(write_en | int_write_en),
+    .address_a(int_write_en ? int_addr : addr[10:0]),
+    .data_a(int_write_en ? int_data : data_in),
+    .q_a(erasable_mem_data),
 
-    .clkb(clk),
-    .web(agc_write_en),
-    .addrb(agc_addr),
-    .dinb(agc_data_in),
-    .doutb(agc_data_out)
+    //.clk_b(clk), [N/A]
+    .rden_b(1'b1),
+    .wren_b(agc_write_en),
+    .address_b(agc_addr),
+    .data_b(agc_data_in),
+    .q_b(agc_data_out)
 );
 
 wire [16:1] mdt_wg;

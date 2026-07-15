@@ -1,0 +1,1 @@
+set_global_assignment -name VERILOG_FILE "$::quartus(qip_path)/mon_adc.v"

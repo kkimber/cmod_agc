@@ -32,6 +32,8 @@ module monitor_channels(
 assign mwchg = mwch & monwt;
 assign mrchg = mrch & monwt;
 
+reg read_en_q;
+
 wire [15:1] hiscalar;
 channel #(9'o3,15) chan_3(
     .clk(clk),
@@ -235,12 +237,12 @@ always @(posedge clk or negedge rst_n) begin
 end
 
 downlink_fifo downlink_fifo1(
-    .clk(clk),
-    .srst(~rst_n),
-    .wr_en(dlink_wr && ~dlink_wr_p),
-    .din(mwl),
-    .rd_en(read_en_q && (addr == 9'o34)),
-    .dout(dntm),
+    .clock(clk),
+    .sclr(~rst_n),
+    .wrreq(dlink_wr && ~dlink_wr_p),
+    .data(mwl),
+    .rdreq(read_en_q && (addr == 9'o34)),
+    .q(dntm),
     .empty(dntm_empty)
 );
 
@@ -267,8 +269,6 @@ channel #(9'o35,15) chan_35(
     .mwl(mwl),
     .val(dntm2)
 );
-
-reg read_en_q;
 
 always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin

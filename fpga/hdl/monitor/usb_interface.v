@@ -67,12 +67,12 @@ cmd_receiver cmd_rx(
 
 // Queue of completed incoming commands
 cmd_fifo cmd_queue(
-    .srst(~rst_n),
-    .clk(clk),
-    .din(cmd_in),
-    .wr_en(cmd_valid),
-    .rd_en(cmd_read_en),
-    .dout(cmd),
+    .sclr(~rst_n),
+    .clock(clk),
+    .data(cmd_in),
+    .wrreq(cmd_valid),
+    .rdreq(cmd_read_en),
+    .q(cmd),
     .full(cmd_fifo_full), 
     .empty(cmd_fifo_empty)
 );
@@ -113,12 +113,12 @@ wire tx_byte_read_en;
 
 // Read message FIFO
 read_fifo read_msg_queue(
-  .clk(clk),
-  .srst(~rst_n),
-  .din(read_msg),
-  .wr_en(read_msg_ready),
-  .rd_en(sender_ready),
-  .dout(send_msg),
+  .clock(clk),
+  .sclr(~rst_n),
+  .data(read_msg),
+  .wrreq(read_msg_ready),
+  .rdreq(sender_ready),
+  .q(send_msg),
   .full(read_fifo_full),
   .empty(read_fifo_empty)
 );
@@ -142,12 +142,12 @@ assign tx_byte_read_en = (~read_byte_fifo_empty) & (~uart_tx_busy);
 
 // Read byte FIFO
 read_byte_fifo read_byte_queue(
-    .srst(~rst_n),
-    .clk(clk),
-    .din(send_byte),
-    .wr_en(send_byte_ready),
-    .rd_en(tx_byte_read_en),
-    .dout(tx_byte),
+    .sclr(~rst_n),
+    .clock(clk),
+    .data(send_byte),
+    .wrreq(send_byte_ready),
+    .rdreq(tx_byte_read_en),
+    .q(tx_byte),
     .full(read_byte_fifo_full),
     .empty(read_byte_fifo_empty),
     .almost_empty(read_byte_fifo_almost_empty)

@@ -51,18 +51,18 @@ wire [15:0] rope_mem_data;
 wire [16:1] fixed_data;
 
 rope_sim_mem rope_mem(
-    .clka(clk),
-    .ena(rope_mem_en),
-    .wea(write_en),
-    .addra(addr),
-    .dina(data_in),
-    .douta(rope_mem_data),
+    .clock(clk),
+    .rden_a(rope_mem_en),
+    .wren_a(write_en),
+    .address_a(addr),
+    .data_a(data_in),
+    .q_a(rope_mem_data),
 
-    .clkb(clk),
-    .web(1'b0),
-    .addrb(faddr),
-    .dinb(16'b0),
-    .doutb(fixed_data)
+    .rden_b(read_en),
+    .wren_b(1'b0),
+    .address_b(faddr),
+    .data_b(16'b0),
+    .q_b(fixed_data)
 );
 
 wire wagc;

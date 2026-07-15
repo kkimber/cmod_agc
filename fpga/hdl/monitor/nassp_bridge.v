@@ -191,6 +191,8 @@ reg [15:1] agc_pipay;
 reg [15:1] agc_pipaz;
 reg [12:1] target_addr;
 
+wire [15:1] pipa_sum;
+
 always @(posedge clk or negedge rst_n) begin
     if (~rst_n) begin
         agc_pipax <= 15'b0;
@@ -234,7 +236,6 @@ always @(*) begin
 end
 
 
-wire [15:1] pipa_sum;
 ones_comp_adder adder(agc_pipa_value, data_in[14:0], pipa_sum);
 
 wire cduxcmd_started;
